@@ -7,6 +7,8 @@ function Thermostat() {
   this.MAXIMUM_TEMP_PSM_OFF = 32
   this.DEFAULT_TEMPERATURE = 20
   this.temperature = this.DEFAULT_TEMPERATURE
+  this.LOW_ENERGY_LIMIT = 18
+  this.MEDIUM_ENERGY_LIMIT = 25
 }
 
 Thermostat.prototype.currentTemperature = function() {
@@ -58,4 +60,14 @@ Thermostat.prototype.checkNotUnderMinimumTemperature = function() {
 
 Thermostat.prototype.resetTemperature = function() {
   this.temperature = this.DEFAULT_TEMPERATURE
+}
+
+Thermostat.prototype.energyUsage = function() {
+  if (this.temperature < this.LOW_ENERGY_LIMIT) {
+    return 'low-usage'
+  }
+  if (this.temperature < this.MEDIUM_ENERGY_LIMIT) {
+    return 'medium-usage'
+  }
+  return 'high-usage'
 }

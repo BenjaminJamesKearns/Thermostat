@@ -68,6 +68,24 @@ describe('Thermostat', function() {
       thermostat.up(13)
       expect(thermostat.currentTemperature()).toEqual(32)
     });
+
+  });
+
+  describe('displaying usage levels', function() {
+
+    it('low usage (< 18)', function() {
+      thermostat.down(3)
+      expect(thermostat.energyUsage()).toEqual('low-usage')
+    });
+
+    it('medium usage (< 25)', function() {
+      expect(thermostat.energyUsage()).toEqual('medium-usage')
+    });
+
+    it('high usage (> 24)', function() {
+      thermostat.up(5)
+      expect(thermostat.energyUsage()).toEqual('high-usage')
+    });
   });
 
 });
