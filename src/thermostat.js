@@ -7,3 +7,11 @@ function Thermostat() {
 Thermostat.prototype.currentTemperature = function() {
   return this.temperature
 }
+
+Thermostat.prototype.up = function(number) {
+  this.temperature += number
+}
+
+Thermostat.prototype.down = function(number) {
+  this.temperature -= number
+}
