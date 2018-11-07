@@ -1,11 +1,12 @@
 'use strict';
 
 function Thermostat() {
-  this.temperature = 20
   this.MINIMUM_TEMPERATURE = 10
   this.powerSavingMode = true
   this.MAXIMUM_TEMP_PSM_ON = 25
   this.MAXIMUM_TEMP_PSM_OFF = 32
+  this.DEFAULT_TEMPERATURE = 20
+  this.temperature = this.DEFAULT_TEMPERATURE
 }
 
 Thermostat.prototype.currentTemperature = function() {
@@ -53,4 +54,8 @@ Thermostat.prototype.checkNotUnderMinimumTemperature = function() {
   if (this.temperature < this.MINIMUM_TEMPERATURE) {
     this.temperature = this.MINIMUM_TEMPERATURE
   }
+}
+
+Thermostat.prototype.resetTemperature = function() {
+  this.temperature = this.DEFAULT_TEMPERATURE
 }

@@ -9,7 +9,7 @@ describe('Thermostat', function() {
   });
 
   it('temperature start at 20', function() {
-    expect(thermostat.currentTemperature()).toEqual(20);
+    expect(thermostat.currentTemperature()).toEqual(thermostat.DEFAULT_TEMPERATURE);
   });
 
   it('temperature increased by 5', function() {
@@ -47,6 +47,11 @@ describe('Thermostat', function() {
     expect(thermostat.isPowerSavingModeOn()).toBe(true)
   });
 
+  it('can be reset to default temperature', function() {
+    thermostat.up(10)
+    thermostat.resetTemperature()
+    expect(thermostat.currentTemperature()).toEqual(thermostat.DEFAULT_TEMPERATURE)
+  });
   describe('when power saving mode is on', function() {
 
     it('has a maximum temperature of 25 degrees', function() {
