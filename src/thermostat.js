@@ -3,6 +3,9 @@
 function Thermostat() {
   this.temperature = 20
   this.MINIMUM_TEMPERATURE = 10
+  this.powerSavingMode = true
+  this.MAXIMUM_TEMP_PSM_ON = 25
+  this.MAXIMUM_TEMP_PSM_OFF = 32
 }
 
 Thermostat.prototype.currentTemperature = function() {
@@ -11,15 +14,43 @@ Thermostat.prototype.currentTemperature = function() {
 
 Thermostat.prototype.up = function(number) {
   this.temperature += number
+  this.checkNotOverMaximumTemperature()
 }
 
 Thermostat.prototype.down = function(number) {
   this.temperature -= number
-  if (this.temperature < this.MINIMUM_TEMPERATURE) {
-    this.temperature = this.MINIMUM_TEMPERATURE
-  }
+  this.checkNotUnderMinimumTemperature()
 }
 
 Thermostat.prototype.isMinimumTemperature = function() {
   return this.temperature === this.MINIMUM_TEMPERATURE
+}
+
+Thermostat.prototype.isPowerSavingModeOn = function() {
+  return this.powerSavingMode === true
+}
+
+Thermostat.prototype.turnPowerSavingModeOff = function() {
+  this.powerSavingMode = false
+}
+
+Thermostat.prototype.turnPowerSavingModeOn = function() {
+  this.powerSavingMode = true
+}
+
+Thermostat.prototype.checkNotOverMaximumTemperature = function() {
+  if (this.isPowerSavingModeOn() === true) {
+    if (this.temperature > this.MAXIMUM_TEMP_PSM_ON) {
+      this.temperature = this.MAXIMUM_TEMP_PSM_ON
+    }
+  }
+  if (this.temperature > this.MAXIMUM_TEMP_PSM_OFF) {
+    this.temperature = this.MAXIMUM_TEMP_PSM_OFF
+  }
+}
+
+Thermostat.prototype.checkNotUnderMinimumTemperature = function() {
+  if (this.temperature < this.MINIMUM_TEMPERATURE) {
+    this.temperature = this.MINIMUM_TEMPERATURE
+  }
 }
