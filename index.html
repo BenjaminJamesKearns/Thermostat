@@ -1,5 +1,9 @@
-<!DOCTYPE html>
+o<!DOCTYPE html>
 <script src="src/thermostat.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.1.4.js"
+  integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4="
+  crossorigin="anonymous"></script>
 <html>
   <head>
     <title>Thermostat</title>
@@ -9,7 +13,9 @@
       <h1 id="temperature"></h1>
       <p>
         <button id="temperature-up">+</button>
+        <input type="text" name="temp-up" value=1 style="width: 40px;">
         <button id="temperature-down">-</button>
+        <input type="text" name="temp-down" value=1 style="width: 40px;">
         <button id="temperature-reset">reset</button>
         power saving mode is <span id="power-saving-status">on</span>
         <button id="powersaving-on">PSM On</button>
