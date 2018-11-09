@@ -15,7 +15,7 @@ Thermostat.prototype.currentTemperature = function() {
   return this.temperature
 }
 
-Thermostat.prototype.up = function(number) {
+Thermostat.prototype.up = function(number = 1) {
   this.temperature += number
   this.checkNotOverMaximumTemperature()
 }
